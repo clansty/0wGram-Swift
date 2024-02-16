@@ -1149,6 +1149,8 @@ final class ForwardMessagesObject : ShareObject {
     }
     private let disposable = MetaDisposable()
     private let album: Bool
+	// 不显示确认，立即转发。复读时用
+	private var forceInstant = false
     init(_ context: AccountContext, messages: [Message], emptyPerformOnClose: Bool = false, album: Bool = false) {
         self.messages = messages
         self.album = album
@@ -1172,7 +1174,11 @@ final class ForwardMessagesObject : ShareObject {
     
     
     
-    override func perform(to peerIds: [PeerId], threadId: MessageId?, comment: ChatTextInputState? = nil) -> Signal<Never, String> {
+	func setForceInstant() {
+		self.forceInstant = true
+	}
+	
+	override func perform(to peerIds: [PeerId], threadId: MessageId?, comment: ChatTextInputState? = nil) -> Signal<Never, String> {
         
         if peerIds.count == 1 {
             let context = self.context
@@ -1218,7 +1224,7 @@ final class ForwardMessagesObject : ShareObject {
                     
                     let navigation = self.context.bindings.rootNavigation()
                     if let peerId = peerIds.first {
-                        if peerId == context.peerId {
+						if peerId == context.peerId || self.forceInstant {
                             if let comment = comment, !comment.inputText.isEmpty {
                                 let parsingUrlType: ParsingType
                                 if peerId.namespace != Namespaces.Peer.SecretChat {
@@ -1229,7 +1235,7 @@ final class ForwardMessagesObject : ShareObject {
                                 let attributes:[MessageAttribute] = [TextEntitiesMessageAttribute(entities: comment.messageTextEntities(parsingUrlType))]
                                 _ = Sender.enqueue(message: EnqueueMessage.message(text: comment.inputText, attributes: attributes, inlineStickers: [:], mediaReference: nil, threadId: optionalMessageThreadId(threadId), replyToMessageId: threadId.flatMap { .init(messageId: $0, quote: nil) }, replyToStoryId: nil, localGroupingKey: nil, correlationId: nil, bubbleUpEmojiOrStickersets: []), context: context, peerId: peerId).start()
                             }
-                            _ = Sender.forwardMessages(messageIds: messageIds, context: context, peerId: context.account.peerId, replyId: threadId.flatMap { .init(messageId: $0, quote: nil) }).start()
+                            _ = Sender.forwardMessages(messageIds: messageIds, context: context, peerId: peerId, replyId: threadId.flatMap { .init(messageId: $0, quote: nil) }).start()
                             if let controller = context.bindings.rootNavigation().controller as? ChatController {
                                 controller.chatInteraction.update({$0.withoutSelectionState()})
                             }

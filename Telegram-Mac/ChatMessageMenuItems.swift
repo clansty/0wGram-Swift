@@ -704,6 +704,12 @@ func chatMenuItems(for message: Message, entry: ChatHistoryEntry?, textLayout: (
             }
             
             
+			if let peer = peer {
+				secondBlock.append(ContextMenuItem("Repeat", handler: {
+					forwardObject.setForceInstant()
+					_ = forwardObject.perform(to: [peer.id], threadId: nil).start()
+				}, itemImage: MenuAnimation.menu_read.value))
+			}
             items.append(makeItem(data.accountPeer))
             if !recent.isEmpty || !dialogs.isEmpty || !favorite.isEmpty {
                 items.append(ContextSeparatorItem())
