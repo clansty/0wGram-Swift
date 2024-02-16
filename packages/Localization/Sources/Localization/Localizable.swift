@@ -54,7 +54,7 @@ public final class L10n {
   /// You've entered an invalid zip code.
   public static var yourCardsZipCodeIsInvalid: String  { return L10n.tr("Localizable", "Your_cards_zip_code_is_invalid") }
   /// Check for Updates
-  public static var _1000Title: String  { return L10n.tr("Localizable", "1000.title") }
+  public static var _1000Title: String  { return L10n.tr("Localizable", "1000.title1") }
   /// Telegram
   public static var _1XtHYUBwTitle: String  { return L10n.tr("Localizable", "1Xt-HY-uBw.title1") }
   /// Transformations
@@ -278,7 +278,7 @@ public final class L10n {
   /// Hold to record audio. Click to switch to video
   public static var appTooltipVoiceRecord: String  { return L10n.tr("Localizable", "App.Tooltip.VoiceRecord") }
   /// Check for Updates
-  public static var appUpdateCheckForUpdates: String  { return L10n.tr("Localizable", "AppUpdate.CheckForUpdates") }
+  public static var appUpdateCheckForUpdates: String  { return L10n.tr("Localizable", "AppUpdate.CheckForUpdates1") }
   /// Downloading...
   public static var appUpdateDownloading: String  { return L10n.tr("Localizable", "AppUpdate.Downloading") }
   /// Download Update
