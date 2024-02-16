@@ -753,6 +753,18 @@ func chatMenuItems(for message: Message, entry: ChatHistoryEntry?, textLayout: (
                     folders.submenu = folderSubmenu
                     items.append(folders)
                 }
+				
+				items.append(ContextMenuItem("QuotLy", handler: {
+					forwardObject.setForceInstant()
+					_ = forwardObject.perform(to: [PeerId(1031952739)], threadId: nil).start()
+				}, itemImage: MenuAnimation.menu_drugs.value))
+				
+				if message.file?.isSticker == true {
+					items.append(ContextMenuItem("Stickers", handler: {
+						forwardObject.setForceInstant()
+						_ = forwardObject.perform(to: [PeerId(429000)], threadId: nil).start()
+					}, itemImage: MenuAnimation.menu_view_sticker_set.value))
+				}
                 
                 let more = ContextMenuItem(strings().chatContextForwardMore, handler: { [unowned chatInteraction] in
                     chatInteraction.forwardMessages([message])
