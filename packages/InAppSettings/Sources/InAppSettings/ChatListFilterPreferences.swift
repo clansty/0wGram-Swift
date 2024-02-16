@@ -312,9 +312,7 @@ public func chatListFilterItems(engine: TelegramEngine, accountManager: AccountM
                                     if !tags.contains(tag) {
                                         if peerCount != 0 {
                                             count += 1
-                                            if hasUnmuted {
-                                                hasUnmutedUnread = true
-                                            }
+                                            // https://t.me/c/1570232723/4335
                                         }
                                     }
                                 }
