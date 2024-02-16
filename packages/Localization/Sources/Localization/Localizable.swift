@@ -56,7 +56,7 @@ public final class L10n {
   /// Check for Updates
   public static var _1000Title: String  { return L10n.tr("Localizable", "1000.title") }
   /// Telegram
-  public static var _1XtHYUBwTitle: String  { return L10n.tr("Localizable", "1Xt-HY-uBw.title") }
+  public static var _1XtHYUBwTitle: String  { return L10n.tr("Localizable", "1Xt-HY-uBw.title1") }
   /// Transformations
   public static var _2oIRnZJCTitle: String  { return L10n.tr("Localizable", "2oI-Rn-ZJC.title") }
   /// Enter Full Screen
@@ -350,23 +350,23 @@ public final class L10n {
   /// Follow System Appearance
   public static var appearanceSettingsFollowSystemAppearance: String  { return L10n.tr("Localizable", "AppearanceSettings.FollowSystemAppearance") }
   /// Good morning! 👋
-  public static var appearanceSettingsChatPreview1: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.1") }
+  public static var appearanceSettingsChatPreview1: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.1l") }
   /// Do you know what time it is?
-  public static var appearanceSettingsChatPreview2: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.2") }
+  public static var appearanceSettingsChatPreview2: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.2l") }
   /// It's morning in Tokyo 😎
-  public static var appearanceSettingsChatPreview3: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.3") }
+  public static var appearanceSettingsChatPreview3: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.3l") }
   /// Ah, you kids today with techno music! You should enjoy the classics, like Hasselhoff!
-  public static var appearanceSettingsChatPreviewFirstText: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.FirstText") }
+  public static var appearanceSettingsChatPreviewFirstText: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.FirstText1") }
   /// CHAT PREVIEW
   public static var appearanceSettingsChatPreviewHeader: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.Header") }
   /// I can't even take you seriously right now.
-  public static var appearanceSettingsChatPreviewSecondText: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.SecondText") }
+  public static var appearanceSettingsChatPreviewSecondText: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.SecondText1") }
   /// Lucio
-  public static var appearanceSettingsChatPreviewUserName1: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.UserName1") }
+  public static var appearanceSettingsChatPreviewUserName1: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.UserName1l") }
   /// Reinhardt
-  public static var appearanceSettingsChatPreviewUserName2: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.UserName2") }
+  public static var appearanceSettingsChatPreviewUserName2: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.UserName2l") }
   /// Reinhardt, we need to find you some new tunes 🎶.
-  public static var appearanceSettingsChatPreviewZeroText: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.ZeroText") }
+  public static var appearanceSettingsChatPreviewZeroText: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatPreview.ZeroText1") }
   /// Bubbles
   public static var appearanceSettingsChatViewBubbles: String  { return L10n.tr("Localizable", "AppearanceSettings.ChatView.Bubbles") }
   /// Minimalist
@@ -16500,7 +16500,7 @@ public final class L10n {
   /// Data Detectors
   public static var tRrPd1PSTitle: String  { return L10n.tr("Localizable", "tRr-pd-1PS.title") }
   /// Telegram
-  public static var uQyDDJDrTitle: String  { return L10n.tr("Localizable", "uQy-DD-JDr.title") }
+  public static var uQyDDJDrTitle: String  { return L10n.tr("Localizable", "uQy-DD-JDr.title1") }
   /// Cut
   public static var uRlIYUnGTitle: String  { return L10n.tr("Localizable", "uRl-iY-unG.title") }
   /// Make Upper Case
