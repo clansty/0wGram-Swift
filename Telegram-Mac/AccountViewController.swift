@@ -426,22 +426,6 @@ private enum AccountInfoEntry : TableItemListNodeEntry {
         case let .update(_, viewType, state):
             
             var text: String = ""
-            #if !APP_STORE
-            if let state = state.any as? AppUpdateState {
-                switch state.loadingState {
-                case let .loading(_, current, total):
-                    text = "\(Int(Float(current) / Float(total) * 100))%"
-                case let .readyToInstall(item), let .unarchiving(item):
-                    text = "\(item.displayVersionString!).\(item.versionString!)"
-                case .uptodate:
-                    text = "" //strings().accountViewControllerDescUpdated
-                case .failed:
-                    text = strings().accountViewControllerDescFailed
-                default:
-                    text = ""
-                }
-            }
-            #endif
            
             return GeneralInteractedRowItem(initialSize, stableId: stableId, name: strings().accountViewControllerUpdate, icon: theme.icons.settingsUpdate, activeIcon: theme.icons.settingsUpdateActive, type: .nextContext(text), viewType: viewType, action: {
                 arguments.openUpdateApp()
@@ -860,9 +844,6 @@ class AccountViewController : TelegramGenericViewController<AccountControllerVie
             
         }, openUpdateApp: { [weak self] in
             guard let navigation = self?.navigation as? MajorNavigationController else {return}
-            #if !APP_STORE
-            navigation.push(AppUpdateViewController(), false)
-            #endif
         }, openPremium: {
             showModal(with: PremiumBoardingController(context: context), for: context.window)
         }, giftPremium: {
@@ -919,12 +900,7 @@ class AccountViewController : TelegramGenericViewController<AccountControllerVie
         let atomicSize = self.atomicSize
         
 
-        let appUpdateState: Signal<Any?, NoError>
-        #if APP_STORE
-            appUpdateState = .single(nil)
-        #else
-        appUpdateState = appUpdateStateSignal |> map(Optional.init)
-        #endif
+        let appUpdateState: Signal<Any?, NoError> = .single(nil)
         
         
         let sessionsCount = context.activeSessionsContext.state |> map {

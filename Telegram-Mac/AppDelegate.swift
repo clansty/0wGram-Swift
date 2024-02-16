@@ -29,11 +29,6 @@ import MetalEngine
 import TelegramMedia
 import RLottie
 
-#if !APP_STORE
-import AppCenter
-import AppCenterCrashes
-#endif
-
 final class CodeSyntax {
     private let syntaxer: Syntaxer
     private init() {
@@ -367,13 +362,6 @@ class AppDelegate: NSResponder, NSApplicationDelegate, NSUserNotificationCenterD
        // applyMainMenuLocalization(window)
         
         mw = window
-        
-        #if BETA || DEBUG
-            if let secret = Bundle.main.infoDictionary?["APPCENTER_SECRET"] as? String {
-                AppCenter.start(withAppSecret: secret, services: [Crashes.self])
-            }
-        #endif
-        
         
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(saveIntermediateDate), userInfo: nil, repeats: true)
 
@@ -990,30 +978,7 @@ class AppDelegate: NSResponder, NSApplicationDelegate, NSUserNotificationCenterD
                                 self.executeUrlAfterLogin = nil
                                 execute(inapp: inApp(for: executeUrlAfterLogin.nsstring, context: context.context))
                             }
-                            #if !APP_STORE
-                            networkDisposable.set((context.context.account.postbox.preferencesView(keys: [PreferencesKeys.networkSettings]) |> delay(5.0, queue: Queue.mainQueue()) |> deliverOnMainQueue).start(next: { settings in
-                                let settings = settings.values[PreferencesKeys.networkSettings]?.get(NetworkSettings.self)
-                                
-                                let applicationUpdateUrlPrefix: String?
-                                if let prefix = settings?.applicationUpdateUrlPrefix {
-                                    if prefix.range(of: "://") == nil {
-                                        applicationUpdateUrlPrefix = "https://" + prefix
-                                    } else {
-                                        applicationUpdateUrlPrefix = prefix
-                                    }
-                                } else {
-                                    applicationUpdateUrlPrefix = nil
-                                }
-                                setAppUpdaterBaseDomain(applicationUpdateUrlPrefix)
-                                #if STABLE
-                                updater_resetWithUpdaterSource(.internal(context: context.context))
-                                #else
-                                updater_resetWithUpdaterSource(.external(context: context.context))
-                                #endif
-                                
-                            }))
-                            #endif
-                            
+                                                        
                             if let url = AppDelegate.eventProcessed {
                                 self.processURL(url)
                             }
@@ -1055,35 +1020,6 @@ class AppDelegate: NSResponder, NSApplicationDelegate, NSUserNotificationCenterD
                                     
                                     window.makeKeyAndOrderFront(nil)
                                     showModal(with: context.modal, for: window, animated: presentAuthAnimated)
-                                    
-                                    #if !APP_STORE
-                                    networkDisposable.set((context.account.postbox.preferencesView(keys: [PreferencesKeys.networkSettings]) |> delay(5.0, queue: Queue.mainQueue()) |> deliverOnMainQueue).start(next: { settings in
-                                        let settings = settings.values[PreferencesKeys.networkSettings]?.get(NetworkSettings.self)
-                                        
-                                        let applicationUpdateUrlPrefix: String?
-                                        if let prefix = settings?.applicationUpdateUrlPrefix {
-                                            if prefix.range(of: "://") == nil {
-                                                applicationUpdateUrlPrefix = "https://" + prefix
-                                            } else {
-                                                applicationUpdateUrlPrefix = prefix
-                                            }
-                                        } else {
-                                            applicationUpdateUrlPrefix = nil
-                                        }
-                                        setAppUpdaterBaseDomain(applicationUpdateUrlPrefix)
-                                        #if STABLE
-                                        if let context = self.contextValue?.context {
-                                            updater_resetWithUpdaterSource(.internal(context: context))
-                                        } else {
-                                            updater_resetWithUpdaterSource(.external(context: nil))
-                                        }
-                                        #else
-                                        updater_resetWithUpdaterSource(.external(context: self.contextValue?.context))
-                                        #endif
-                                        
-                                    }))
-                                    #endif
-                                    
                                     
                                 }))
                         } else {
@@ -1184,33 +1120,13 @@ class AppDelegate: NSResponder, NSApplicationDelegate, NSUserNotificationCenterD
 
 
     @IBAction func checkForUpdates(_ sender: Any) {
-        #if !APP_STORE
-            showModal(with: InputDataModalController(AppUpdateViewController()), for: window)
-            #if STABLE
-                if let context = self.contextValue?.context {
-                    updater_resetWithUpdaterSource(.internal(context: context))
-                } else {
-                    updater_resetWithUpdaterSource(.external(context: nil))
-                }
-            #else
-                updater_resetWithUpdaterSource(.external(context: self.contextValue?.context))
-            #endif
-        #endif
     }
     
     override func awakeFromNib() {
-        #if APP_STORE
-        if let menu = NSApp.mainMenu?.item(at: 0)?.submenu, let sparkleItem = menu.item(withTag: 1000) {
-            menu.removeItem(sparkleItem)
-        }
-        #endif
     }
     
     
     @objc func checkUpdates() {
-        #if !APP_STORE
-        showModal(with: InputDataModalController(AppUpdateViewController()), for: window)
-        #endif
     }
     
     
@@ -1391,11 +1307,7 @@ class AppDelegate: NSResponder, NSApplicationDelegate, NSUserNotificationCenterD
     func applicationWillTerminate(_ notification: Notification) {
         self.terminated = true
         deinitCrashHandler(containerUrl)
-        
-        #if !APP_STORE
-            updateAppIfNeeded()
-        #endif
-    }
+	}
     
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         

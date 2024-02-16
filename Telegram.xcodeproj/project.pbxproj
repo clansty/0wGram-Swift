@@ -815,7 +815,6 @@
 		9F21F65D20B5A9C900332C85 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F21F65C20B5A9C900332C85 /* MapKit.framework */; };
 		9F262D5F21BFD5BC006817CD /* LocalizationPreviewModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F262D5E21BFD5BC006817CD /* LocalizationPreviewModalController.swift */; };
 		9F27EFF920C6B8EE00682B76 /* PassportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10CE8720610127002DD61A /* PassportController.swift */; };
-		9F3D5F6322044D8700CB0CAA /* AppUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D5F6222044D8700CB0CAA /* AppUpdateViewController.swift */; };
 		9F3D5F8622085B2000CB0CAA /* UpdaterNotifySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D5F8522085B2000CB0CAA /* UpdaterNotifySettings.swift */; };
 		9F3EAB3B20A5A1EC003FE7E3 /* NetworkUsageStatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3EAB3A20A5A1EC003FE7E3 /* NetworkUsageStatsController.swift */; };
 		9F3EAB4520A5ED2F003FE7E3 /* ocr_nn.bin in Resources */ = {isa = PBXBuildFile; fileRef = 9F3EAB3F20A5ED2F003FE7E3 /* ocr_nn.bin */; };
@@ -916,8 +915,6 @@
 		A7C7215723FD45D300CE3F75 /* SaveModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7215623FD45D300CE3F75 /* SaveModalController.swift */; };
 		A7C7215923FD473E00CE3F75 /* success_saved.tgs in Resources */ = {isa = PBXBuildFile; fileRef = A7C7215823FD473D00CE3F75 /* success_saved.tgs */; };
 		A7C7215B23FD4BAA00CE3F75 /* LottieLocalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7215A23FD4BAA00CE3F75 /* LottieLocalAnimations.swift */; };
-		A7D08F48236AC9B6002DC240 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0BCD9E2087BABC001D8D8A /* Sparkle.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A7D08F4A236AC9BB002DC240 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9F0BCD9E2087BABC001D8D8A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7D2822F236C549B0000A9BF /* SyncCoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D2822E236C549B0000A9BF /* SyncCoreExtension.swift */; };
 		A7D28230236C549B0000A9BF /* SyncCoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D2822E236C549B0000A9BF /* SyncCoreExtension.swift */; };
 		A7D28237236C5B2C0000A9BF /* PhoneNumberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D28236236C5B2C0000A9BF /* PhoneNumberUtils.swift */; };
@@ -1248,7 +1245,6 @@
 		C2CBCAC01D81528700142EC0 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CBCABF1D81528700142EC0 /* System.swift */; };
 		C2CBCAC51D81649E00142EC0 /* ChatListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CBCAC41D81649E00142EC0 /* ChatListRowView.swift */; };
 		C2CE43E420E2CFE800656543 /* PlayerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE43E320E2CFE700656543 /* PlayerListController.swift */; };
-		C2CE43E920F4F74F00656543 /* UpdateModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CE43E820F4F74F00656543 /* UpdateModalController.swift */; };
 		C2CFCABE1EBB4A4D00843F6A /* voip_connecting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C2CFCABD1EBB4A4D00843F6A /* voip_connecting.mp3 */; };
 		C2CFCAC01EBB9C8100843F6A /* CallAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CFCABF1EBB9C8100843F6A /* CallAudioPlayer.swift */; };
 		C2D1839D1E4DBF7E001CE25A /* MGalleryPeerPhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1839C1E4DBF7E001CE25A /* MGalleryPeerPhotoItem.swift */; };
@@ -1306,7 +1302,6 @@
 		D004BD2B23153415009A54B1 /* ThemePreviewModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D004BD2A23153415009A54B1 /* ThemePreviewModalController.swift */; };
 		D00746CA257691760000DF74 /* StickerShimmerEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00746C9257691760000DF74 /* StickerShimmerEffectView.swift */; };
 		D00746EE2577A6BE0000DF74 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C9B92A1E8011CD00380D79 /* Carbon.framework */; };
-		D0076EE825685A50007EF588 /* AppCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0076EE725685A50007EF588 /* AppCenter.framework */; };
 		D0076EEB25685BB5007EF588 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D0076EEA25685BB5007EF588 /* libbz2.1.0.tbd */; };
 		D00B191C24E54BA3006CCB87 /* CallReceptionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B191B24E54BA3006CCB87 /* CallReceptionControl.swift */; };
 		D00B191E24E54F20006CCB87 /* CallStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B191D24E54F20006CCB87 /* CallStatusView.swift */; };
@@ -1373,8 +1368,6 @@
 		D0830FC424127473006198E7 /* new_folder.tgs in Resources */ = {isa = PBXBuildFile; fileRef = D0830FC324127468006198E7 /* new_folder.tgs */; };
 		D0906CFC254BFE1D000E6961 /* ModalPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0906CFB254BFE1D000E6961 /* ModalPreviews.swift */; };
 		D093474E242DCFC4000ECA88 /* PeerMediaGroupPeersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D093474D242DCFC4000ECA88 /* PeerMediaGroupPeersController.swift */; };
-		D0983E172568373E00467703 /* AppCenterAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0983E162568373E00467703 /* AppCenterAnalytics.framework */; };
-		D0983E192568373E00467703 /* AppCenterCrashes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0983E182568373E00467703 /* AppCenterCrashes.framework */; };
 		D098C7191D7E175A007784E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D098C7181D7E175A007784E4 /* AppDelegate.swift */; };
 		D098C71B1D7E175A007784E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D098C71A1D7E175A007784E4 /* Assets.xcassets */; };
 		D098C71E1D7E175A007784E4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D098C71C1D7E175A007784E4 /* MainMenu.xib */; };
@@ -1433,17 +1426,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C20D5AB61DAA94500042616A /* Copy Files */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A7D08F4A236AC9BB002DC240 /* Sparkle.framework in Copy Files */,
-			);
-			name = "Copy Files";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C232EA661E1D041B00C4D38C /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -2259,7 +2241,6 @@
 		9F21F65420B5A72800332C85 /* LocationModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModalController.swift; sourceTree = "<group>"; };
 		9F21F65C20B5A9C900332C85 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9F262D5E21BFD5BC006817CD /* LocalizationPreviewModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPreviewModalController.swift; sourceTree = "<group>"; };
-		9F3D5F6222044D8700CB0CAA /* AppUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateViewController.swift; sourceTree = "<group>"; };
 		9F3D5F8522085B2000CB0CAA /* UpdaterNotifySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterNotifySettings.swift; sourceTree = "<group>"; };
 		9F3EAB3A20A5A1EC003FE7E3 /* NetworkUsageStatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUsageStatsController.swift; sourceTree = "<group>"; };
 		9F3EAB3F20A5ED2F003FE7E3 /* ocr_nn.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = ocr_nn.bin; sourceTree = "<group>"; };
@@ -2709,7 +2690,6 @@
 		C2CBCABF1D81528700142EC0 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		C2CBCAC41D81649E00142EC0 /* ChatListRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListRowView.swift; sourceTree = "<group>"; };
 		C2CE43E320E2CFE700656543 /* PlayerListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListController.swift; sourceTree = "<group>"; };
-		C2CE43E820F4F74F00656543 /* UpdateModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateModalController.swift; sourceTree = "<group>"; };
 		C2CFCAB91EBB4A2200843F6A /* voip_busy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = voip_busy.caf; sourceTree = "<group>"; };
 		C2CFCABA1EBB4A2200843F6A /* voip_end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = voip_end.caf; sourceTree = "<group>"; };
 		C2CFCABB1EBB4A2200843F6A /* voip_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = voip_fail.caf; sourceTree = "<group>"; };
@@ -2965,12 +2945,9 @@
 				27D43DB22791774C006968A6 /* libcrypto.a in Frameworks */,
 				27A697A3273D313000B33415 /* Stripe in Frameworks */,
 				27C2B1A627C3CF13004BC87B /* FetchManager in Frameworks */,
-				D0076EE825685A50007EF588 /* AppCenter.framework in Frameworks */,
 				27B6D05927393A4200C785C7 /* SwiftSignalKit in Frameworks */,
 				2796FEFE274241D600DA653C /* FastBlur in Frameworks */,
-				D0983E172568373E00467703 /* AppCenterAnalytics.framework in Frameworks */,
 				27D43DA0279176DE006968A6 /* libavformat.a in Frameworks */,
-				D0983E192568373E00467703 /* AppCenterCrashes.framework in Frameworks */,
 				27D43DA627917717006968A6 /* libwebp.a in Frameworks */,
 				27B8E7C027424F2E001B8DF7 /* TGCurrencyFormatter in Frameworks */,
 				27D696F6274F8458008A723E /* ColorPalette in Frameworks */,
@@ -2992,7 +2969,6 @@
 				27B6D05B27393A4700C785C7 /* TGUIKit in Frameworks */,
 				27A697A9273D3A5F00B33415 /* Localization in Frameworks */,
 				27B8E7C627425279001B8DF7 /* TGModernGrowingTextView in Frameworks */,
-				A7D08F48236AC9B6002DC240 /* Sparkle.framework in Frameworks */,
 				D0DDECEA2322FA0200E1B359 /* Contacts.framework in Frameworks */,
 				27D43DA4279176FC006968A6 /* libopus.a in Frameworks */,
 				27D9130728323A74007CF40F /* RangeSet in Frameworks */,
@@ -4012,7 +3988,6 @@
 		9F3D5F6122044D3500CB0CAA /* updater */ = {
 			isa = PBXGroup;
 			children = (
-				9F3D5F6222044D8700CB0CAA /* AppUpdateViewController.swift */,
 				9F3D5F8522085B2000CB0CAA /* UpdaterNotifySettings.swift */,
 			);
 			name = updater;
@@ -5653,7 +5628,6 @@
 				C22EE6181E66ECB200334C38 /* ReportReasonModalController.swift */,
 				C24BA3BC1E9D30F800E8970B /* DeleteSupergroupMessagesModalController.swift */,
 				9F72974720C597800067F815 /* TermsModalController.swift */,
-				C2CE43E820F4F74F00656543 /* UpdateModalController.swift */,
 				9F262D5E21BFD5BC006817CD /* LocalizationPreviewModalController.swift */,
 				9F6314E021CAA0AB009FD379 /* NewPollController.swift */,
 				9F18908C2237B5A400665EF5 /* InputURLFormatterModalController.swift */,
@@ -6093,7 +6067,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D098C7221D7E175A007784E4 /* Build configuration list for PBXNativeTarget "Telegram" */;
 			buildPhases = (
-				C20D5AB61DAA94500042616A /* Copy Files */,
 				D098C7121D7E175A007784E4 /* Frameworks */,
 				D098C7111D7E175A007784E4 /* Sources */,
 				D098C7131D7E175A007784E4 /* Resources */,
@@ -6885,7 +6858,6 @@
 				27CFB0212B3FED7400221DE7 /* SingleTimeMediaViewer.swift in Sources */,
 				C226742F1DBE2CB3000BA9ED /* PanelUtils.swift in Sources */,
 				D0530D3E24E69133003273BC /* CallControl.swift in Sources */,
-				C2CE43E920F4F74F00656543 /* UpdateModalController.swift in Sources */,
 				C22EE6191E66ECB200334C38 /* ReportReasonModalController.swift in Sources */,
 				277C34A8267B5BC100B1CAA7 /* ChatInputMenuView.swift in Sources */,
 				27F674142971504E0014DCB9 /* CreateChannelController.swift in Sources */,
@@ -7444,7 +7416,6 @@
 				2733670D2760F3010027441E /* ChatMessageMenuItems.swift in Sources */,
 				C248BD241E706104004B9106 /* BlockedPeersViewController.swift in Sources */,
 				C230B9111DD3866A0057F596 /* ComposeActions.swift in Sources */,
-				9F3D5F6322044D8700CB0CAA /* AppUpdateViewController.swift in Sources */,
 				C24DAB861E08026C005EE404 /* MGalleryVideoItem.swift in Sources */,
 				C2DE5D3C1F3CAE120081EC1E /* InstantPageTextItem.swift in Sources */,
 				D0A75F2A24487A1E001F84A0 /* EditImageCanvasControls.swift in Sources */,
@@ -7717,6 +7688,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 2.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -7751,7 +7723,6 @@
 					"$(PROJECT_DIR)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 					"$(PROJECT_DIR)/submodules",
-					"$(PROJECT_DIR)/submodules/AppCenter",
 				);
 				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_OPTIMIZATION_LEVEL = 2;
@@ -7762,6 +7733,8 @@
 				HEADERMAP_USES_VFS = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/submodules/libtgvoip";
 				INFOPLIST_FILE = "Telegram-Mac/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = 0wGram;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -7777,7 +7750,6 @@
 					"$(PROJECT_DIR)/core-xprojects/webrtc/build/webrtc",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 10.7.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
@@ -7831,7 +7803,6 @@
 					"$(PROJECT_DIR)/core-xprojects/openssl/build/openssl/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 10.7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib";
@@ -7879,7 +7850,6 @@
 					"$(PROJECT_DIR)/core-xprojects/openssl/build/openssl/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 10.7.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib";
@@ -7934,6 +7904,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 2.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -7971,7 +7942,6 @@
 					"$(PROJECT_DIR)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 					"$(PROJECT_DIR)/submodules",
-					"$(PROJECT_DIR)/submodules/AppCenter",
 				);
 				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -7982,6 +7952,8 @@
 				HEADERMAP_USES_VFS = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/submodules/libtgvoip";
 				INFOPLIST_FILE = "Telegram-Mac/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = 0wGram;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -7997,7 +7969,6 @@
 					"$(PROJECT_DIR)/core-xprojects/webrtc/build/webrtc",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 10.7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (

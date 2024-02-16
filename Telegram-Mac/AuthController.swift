@@ -274,9 +274,6 @@ class AuthController : GenericViewController<AuthView> {
     }
         
     
-    #if !APP_STORE
-    private let updateController: UpdateTabController
-    #endif
     
     private var current: ViewController?
     
@@ -306,9 +303,6 @@ class AuthController : GenericViewController<AuthView> {
         self.signup_c = .init(frame: NSMakeRect(0, 0, 380, 300))
         
         self.otherAccountPhoneNumbers = otherAccountPhoneNumbers
-        #if !APP_STORE
-        updateController = UpdateTabController(sharedContext)
-        #endif
         super.init()
         bar = .init(height: 0)
     }
@@ -395,9 +389,6 @@ class AuthController : GenericViewController<AuthView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        #if !APP_STORE
-        genericView.updateView = updateController.view
-        #endif
         
         let sharedContext = self.sharedContext
                         
@@ -1092,9 +1083,6 @@ class AuthController : GenericViewController<AuthView> {
         code_entry_c.updateLocalizationAndTheme(theme: theme)
         password_entry_c.updateLocalizationAndTheme(theme: theme)
         
-        #if !APP_STORE
-        updateController.updateLocalizationAndTheme(theme: theme)
-        #endif
     }
     override func viewDidResized(_ size: NSSize) {
         super.viewDidResized(size)

@@ -14,249 +14,6 @@ import Postbox
 import SwiftSignalKit
 import KeyboardKey
 
-#if !APP_STORE
-import Sparkle
-enum UpdateButtonState {
-    case common
-    case important
-    case critical
-}
-
-final class UpdateTabView : Control {
-    let textView: TextView = TextView()
-    let imageView: ImageView = ImageView()
-    let shimmer = ShimmerEffectView()
-    let progressView: ProgressIndicator = ProgressIndicator(frame: NSMakeRect(0, 0, 24, 24))
-    
-    var isChatList: Bool = false
-    
-    var isInstalling: Bool = false {
-        didSet {
-            shimmer.change(opacity: isInstalling ? 0 : 1)
-            textView.isHidden = isInstalling || layoutState == .minimisize
-            progressView.isHidden = !isInstalling
-            imageView.isHidden = isInstalling || layoutState != .minimisize
-            
-            if layoutState != .minimisize, isInstalling, let superview = self.superview {
-                self.layer?.cornerRadius = frame.height / 2
-                change(size: NSMakeSize(60, frame.height), animated: true, timingFunction: .spring)
-                change(pos: NSMakePoint(superview.bounds.focus(self.frame.size).minX, self.frame.minY), animated: true, timingFunction: .spring)
-                progressView.change(pos: self.bounds.focus(progressView.frame.size).origin, animated: true, timingFunction: .spring)
-            } else {
-                if let superview = self.superview, isChatList {
-                    change(size: NSMakeSize(self.textView.frame.width + 40, frame.height), animated: true, timingFunction: .spring)
-                    if layoutState != .minimisize {
-                        change(pos: NSMakePoint(superview.bounds.focus(self.frame.size).minX, superview.frame.height - self.frame.height - 60), animated: true, timingFunction: .spring)
-                    } else {
-                        change(pos: NSMakePoint(superview.bounds.focus(self.frame.size).minX, superview.frame.height - self.frame.height), animated: true, timingFunction: .spring)
-                    }
-                    imageView.change(pos: self.bounds.focus(imageView.frame.size).origin, animated: true, timingFunction: .spring)
-                }
-            }
-            
-        }
-    }
-    
-    var layoutState: SplitViewState = .dual {
-        didSet {
-            let installing = self.isInstalling
-            self.isInstalling = installing
-        }
-    }
-    
-    
-    
-    required init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        textView.userInteractionEnabled = false
-        textView.isSelectable = false
-        addSubview(textView)
-        addSubview(progressView)
-        addSubview(imageView)
-        addSubview(shimmer)
-        
-        shimmer.isStatic = true
-        
-        progressView.progressColor = .white
-        isInstalling = false
-        
-        let layout = TextViewLayout(.initialize(string: strings().updateUpdateTelegram, color: theme.colors.underSelectedColor, font: .medium(.title)))
-        layout.measure(width: max(280, frame.width))
-        textView.update(layout)
-        
-        let shadow = NSShadow()
-        shadow.shadowBlurRadius = 5
-        shadow.shadowColor = NSColor.black.withAlphaComponent(0.3)
-        shadow.shadowOffset = NSMakeSize(0, 2)
-        self.shadow = shadow
-        
-    }
-    
-    override func cursorUpdate(with event: NSEvent) {
-        NSCursor.pointingHand.set()
-    }
-    
-    override var backgroundColor: NSColor {
-        didSet {
-            textView.backgroundColor = backgroundColor
-        }
-    }
-    
-    override func updateLocalizationAndTheme(theme: PresentationTheme) {
-        super.updateLocalizationAndTheme(theme: theme)
-        imageView.image = (theme as! TelegramPresentationTheme).icons.appUpdate
-        imageView.sizeToFit()
-        needsLayout = true
-        shimmer.updateAbsoluteRect(bounds, within: bounds.size)
-        shimmer.update(backgroundColor: .clear, foregroundColor: .clear, shimmeringColor: NSColor.white.withAlphaComponent(0.3), shapes: [.roundedRect(rect: bounds, cornerRadius: bounds.height / 2)], horizontal: true, size: bounds.size)
-    }
-    
-    override func setFrameOrigin(_ newOrigin: NSPoint) {
-        super.setFrameOrigin(newOrigin)
-    }
-    
-    
-    override func layout() {
-        super.layout()
-        
-        
-       
-        shimmer.frame = bounds
-        shimmer.layer?.cornerRadius = bounds.height / 2
-        textView.center()
-        progressView.center()
-        imageView.center()
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-final class UpdateTabController: GenericViewController<UpdateTabView> {
-    private let disposable = MetaDisposable()
-    private let shakeDisposable = MetaDisposable()
-    private let context: SharedAccountContext
-    private var state: UpdateButtonState = .common {
-        didSet {
-            switch state {
-            case .common:
-                genericView.backgroundColor = theme.colors.accent
-            case .important:
-                genericView.backgroundColor = theme.colors.greenUI
-            case .critical:
-                genericView.backgroundColor = theme.colors.redUI
-            }
-        }
-    }
-    private var parentSize: NSSize = .zero
-    private let stateDisposable = MetaDisposable()
-    private var appcastItem: SUAppcastItem? {
-        didSet {
-            
-            genericView.isHidden = appcastItem == nil
-            
-            
-            var state = self.state
-            
-            if appcastItem != oldValue {
-                if let appcastItem = appcastItem {
-                    state = appcastItem.isCritical ? .critical : .common
-                    
-                    if state != .critical {
-                        
-                        let importantDelay: Double = 60 * 60 * 24
-                        let criticalDelay: Double = 60 * 60 * 24
-                        let updateSignal = Signal<UpdateButtonState, NoError>.single(.important) |> delay(importantDelay, queue: .mainQueue()) |> then(.single(.critical) |> delay(criticalDelay, queue: .mainQueue()))
-                        
-                        stateDisposable.set(updateSignal.start(next: { [weak self] newState in
-                            self?.state = newState
-                        }))
-                        
-                    }
-                    
-                } else {
-                    stateDisposable.set(nil)
-                }
-            }
-            self.state = state
-//            self.updateLayout(self.context.layout, parentSize: parentSize, isChatList: true)
-        }
-    }
-    
-    init(_ context: SharedAccountContext) {
-        self.context = context
-        super.init()
-        self.bar = NavigationBarStyle(height: 0)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let context = self.context
-        
-        
-        genericView.set(background: theme.colors.grayForeground, for: .Normal)
-        genericView.isHidden = true
-        
-        disposable.set((appUpdateStateSignal |> deliverOnMainQueue).start(next: { [weak self] state in
-            switch state.loadingState {
-            case let .readyToInstall(item):
-                self?.appcastItem = item
-                self?.genericView.isInstalling = false
-            case .installing:
-                self?.genericView.isInstalling = true
-            default:
-                self?.appcastItem = nil
-                self?.genericView.isInstalling = false
-            }
-        }))
-        
-        genericView.set(handler: { _ in
-            updateApplication(sharedContext: context)
-        }, for: .Click)
-    }
-    
-    override func updateLocalizationAndTheme(theme: PresentationTheme) {
-        super.updateLocalizationAndTheme(theme: theme)
-        let item = self.appcastItem
-        self.appcastItem = item
-    }
-    
-    func updateLayout(_ layout: SplitViewState, parentSize: NSSize, isChatList: Bool) {
-        genericView.layoutState = layout
-        self.parentSize = parentSize
-        let bottom = parentSize.height - genericView.frame.height
-        genericView.isChatList = isChatList
-        if isChatList && layout != .minimisize {
-            genericView.setFrameSize(NSMakeSize(genericView.textView.frame.width + 40, 40))
-            genericView.layer?.cornerRadius = genericView.frame.height / 2
-            genericView.centerX(y: layout == .minimisize ? bottom - 10 : bottom - 60)
-            
-            var shakeDelay: Double = 60 * 60
-           
-            
-            let signal = Signal<Void, NoError>.single(Void()) |> delay(shakeDelay, queue: .mainQueue()) |> then(.single(Void()) |> delay(shakeDelay, queue: .mainQueue()) |> restart)
-            self.shakeDisposable.set(signal.start(next: { [weak self] in
-                self?.genericView.shake(beep: false)
-            }))
-        } else {
-            genericView.setFrameSize(NSMakeSize(parentSize.width, 60))
-            genericView.setFrameOrigin(NSMakePoint(0, layout == .minimisize ? bottom : bottom - 60))
-            genericView.layer?.cornerRadius = 0
-            shakeDisposable.set(nil)
-        }
-    }
-    
-    deinit {
-        disposable.dispose()
-        stateDisposable.dispose()
-        shakeDisposable.dispose()
-    }
-}
-
-#endif
-
 class MainViewController: TelegramViewController {
 
     let chatList: ChatListController
@@ -268,19 +25,12 @@ class MainViewController: TelegramViewController {
     private let layoutDisposable:MetaDisposable = MetaDisposable()
     private let badgeCountDisposable: MetaDisposable = MetaDisposable()
     private let tooltipDisposable = MetaDisposable()
-    #if !APP_STORE
-    private let updateController: UpdateTabController
-    #endif
-    
     
     override func viewDidResized(_ size: NSSize) {
         super.viewDidResized(size)
         tabController.view.frame = bounds
         self.navigation.frame = bounds
         self.contacts.frame = bounds
-        #if !APP_STORE
-        updateController.updateLayout(context.layout, parentSize: size, isChatList: true)
-        #endif
     }
     
     override func loadView() {
@@ -313,9 +63,6 @@ class MainViewController: TelegramViewController {
         addSubview(self.tabController.view)
         
         if !context.isSupport {
-        #if !APP_STORE
-            addSubview(updateController.view)
-        #endif
         }
                 
         tabController.add(tab: TabItem(image: theme.icons.tab_contacts, selectedImage: theme.icons.tab_contacts_active, controller: contacts))
@@ -342,9 +89,6 @@ class MainViewController: TelegramViewController {
                 return
             }
             self.tabController.hideTabView(state == .minimisize)
-            #if !APP_STORE
-            self.updateController.updateLayout(state, parentSize: self.frame.size, isChatList: true)
-            #endif
         }))
         
         tabController.didChangedIndex = { [weak self] index in
@@ -529,9 +273,6 @@ class MainViewController: TelegramViewController {
 
         
         let theme = (theme as! TelegramPresentationTheme)
-        #if !APP_STORE
-        updateController.updateLocalizationAndTheme(theme: theme)
-        #endif
         
         updateTabsIfNeeded()
         self.tabController.view.needsLayout = true
@@ -711,9 +452,6 @@ class MainViewController: TelegramViewController {
         self.phoneCalls = RecentCallsViewController(context)
         self.navigation = NavigationViewController(self.chatList, context.window)
         
-        #if !APP_STORE
-            updateController = UpdateTabController(context.sharedContext)
-        #endif
         super.init(context)
     }
 
