@@ -59,7 +59,7 @@ private func copyI420BufferToNV12Buffer(buffer: OngoingGroupCallContext.VideoFra
                 guard let srcV = srcVBuffer.baseAddress else {
                     return
                 }
-                LibYUVConverter.i420ToNV12(withSrcY: srcY.assumingMemoryBound(to: UInt8.self), srcStrideY: Int32(buffer.strideY), srcU: srcU.assumingMemoryBound(to: UInt8.self), srcStrideU: Int32(buffer.strideU), srcV: srcV.assumingMemoryBound(to: UInt8.self), srcStrideV: Int32(buffer.strideV), dstY: dstY.assumingMemoryBound(to: UInt8.self), dstStrideY: Int32(dstStrideY), dstUV: dstUV.assumingMemoryBound(to: UInt8.self), dstStrideUV: Int32(dstStrideUV), width: Int32(buffer.width), height: Int32(buffer.height))
+//                LibYUVConverter.i420ToNV12(withSrcY: srcY.assumingMemoryBound(to: UInt8.self), srcStrideY: Int32(buffer.strideY), srcU: srcU.assumingMemoryBound(to: UInt8.self), srcStrideU: Int32(buffer.strideU), srcV: srcV.assumingMemoryBound(to: UInt8.self), srcStrideV: Int32(buffer.strideV), dstY: dstY.assumingMemoryBound(to: UInt8.self), dstStrideY: Int32(dstStrideY), dstUV: dstUV.assumingMemoryBound(to: UInt8.self), dstStrideUV: Int32(dstStrideUV), width: Int32(buffer.width), height: Int32(buffer.height))
             }
         }
     }

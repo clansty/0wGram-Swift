@@ -6198,7 +6198,6 @@
 				TargetAttributes = {
 					C232EA901E1D07E700C4D38C = {
 						CreatedOnToolsVersion = 8.2;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -6211,7 +6210,6 @@
 					D098C7141D7E175A007784E4 = {
 						CreatedOnToolsVersion = 8.0;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -7741,11 +7739,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "Telegram-Mac/Telegram-Sandbox.entitlements";
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 245582;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7788,7 +7786,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram;
+				PRODUCT_BUNDLE_IDENTIFIER = al.0w.gram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PRODUCTION;
@@ -7809,10 +7807,12 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CODE_SIGN_ENTITLEMENTS = TelegramShare/TelegramShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 245682;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c17;
@@ -7836,7 +7836,7 @@
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram.TelegramShare;
+				PRODUCT_BUNDLE_IDENTIFIER = al.0w.gram.TelegramShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
@@ -7860,6 +7860,7 @@
 				CURRENT_PROJECT_VERSION = 245682;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9XM93YTY62;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c17;
@@ -7884,7 +7885,7 @@
 				OTHER_LDFLAGS = "$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram.TelegramShare;
+				PRODUCT_BUNDLE_IDENTIFIER = al.0w.gram.TelegramShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
@@ -7955,13 +7956,14 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "Telegram-Mac/Telegram-Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 245582;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8004,7 +8006,7 @@
 					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram;
+				PRODUCT_BUNDLE_IDENTIFIER = al.0w.gram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
