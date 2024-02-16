@@ -191,6 +191,7 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
     private let activities:ChatActivitiesModel
     private let searchButton:ImageButton = ImageButton()
     private let callButton:ImageButton = ImageButton()
+    private let recentActionButton:ImageButton = ImageButton()
     private let chatInteraction:ChatInteraction
     private let avatarControl:AvatarStoryControl = AvatarStoryControl(font: .avatar(12), size: NSMakeSize(36, 36))
     private let badgeNode:GlobalBadgeNode
@@ -332,6 +333,7 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
                 
         searchButton.disableActions()
         callButton.disableActions()
+        recentActionButton.disableActions()
         
                 
         badgeNode = GlobalBadgeNode(chatInteraction.context.account, sharedContext: chatInteraction.context.sharedContext, excludePeerId: self.chatInteraction.peerId, view: View(), layoutChanged: {
@@ -366,9 +368,20 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
                 chatInteraction.call()
             }
         }, for: .Click)
+		recentActionButton.set(image: theme.icons.previewSenderArchiveAccent, for: .Normal)
+		recentActionButton.set(image: theme.icons.previewSenderArchive, for: .Highlight)
+
+        recentActionButton.set(handler: { [weak self] _ in
+			guard let chatInteraction = self?.chatInteraction else {
+				return
+			}
+			controller.navigationController?.push(ChannelEventLogController(chatInteraction.context, peerId: chatInteraction.peerId))
+        }, for: .Click)
         
         activities.view?.isHidden = true
+		recentActionButton.isHidden = true
         callButton.isHidden = true
+        addSubview(recentActionButton)
         addSubview(callButton)
         
         avatarControl.setFrameSize(36,36)
@@ -580,8 +593,12 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
 
         
         photoContainer.centerY(x: additionInset)
-        searchButton.centerY(x:frame.width - searchButton.frame.width)
-        callButton.centerY(x: searchButton.isHidden ? frame.width - callButton.frame.width : searchButton.frame.minX - callButton.frame.width - 20)
+		var currentX = frame.width - searchButton.frame.width
+        searchButton.centerY(x: currentX)
+		currentX = searchButton.isHidden ? frame.width - callButton.frame.width : searchButton.frame.minX - callButton.frame.width - 20
+        callButton.centerY(x: currentX)
+		currentX = callButton.isHidden ? currentX : currentX - recentActionButton.frame.width - 20
+		recentActionButton.centerY(x: currentX)
         
         if hasPhoto {
             activities.view?.setFrameOrigin(photoContainer.frame.maxX + 8, 25)
@@ -611,7 +628,7 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
     }
 
     override var inset:CGFloat {
-        return 36 + 50 + (callButton.isHidden ? 10 : callButton.frame.width + 35) + (statusControl?.frame.width ?? 0)
+        return 36 + 50 + (callButton.isHidden ? 10 : callButton.frame.width + 35) + (recentActionButton.isHidden ? 10 : recentActionButton.frame.width + 35) + (statusControl?.frame.width ?? 0)
     }
     
     
@@ -655,6 +672,7 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
             case .history:
                 if let peer = peerViewMainPeer(peerView) {
                     if peer.isGroup || peer.isSupergroup || peer.isChannel {
+						recentActionButton.isHidden = !peer.isAdmin
                         if let groupCall = presentation.groupCall {
                             if let data = groupCall.data, data.participantCount == 0 && groupCall.activeCall.scheduleTimestamp == nil {
                                 callButton.isHidden = presentation.reportMode != nil
@@ -665,13 +683,16 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
                             callButton.isHidden = true
                         }
                     } else {
+						recentActionButton.isHidden = true
                         callButton.isHidden = !peer.canCall || chatInteraction.peerId == chatInteraction.context.peerId || presentation.reportMode != nil
                     }
                 } else {
+					recentActionButton.isHidden = true
                     callButton.isHidden = true
                 }
                 
             default:
+				recentActionButton.isHidden = true
                 callButton.isHidden = true
             }
 
@@ -710,7 +731,7 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
                 if peer.isGroup || peer.isSupergroup || peer.isChannel {
                     callButton.set(image: theme.icons.chat_voice_chat, for: .Normal)
                     callButton.set(image: theme.icons.chat_voice_chat_active, for: .Highlight)
-                } else {
+				} else {
                     callButton.set(image: theme.icons.chatCall, for: .Normal)
                     callButton.set(image: theme.icons.chatCallActive, for: .Highlight)
                 }
@@ -727,6 +748,7 @@ class ChatTitleBarView: TitledBarView, InteractionContentViewProtocol {
             }
             
             callButton.sizeToFit()
+			recentActionButton.sizeToFit()
 
         }
         updateTitle(force, presentation: chatInteraction.presentation)

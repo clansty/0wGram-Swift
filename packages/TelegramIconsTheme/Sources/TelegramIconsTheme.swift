@@ -3632,6 +3632,19 @@ public final class TelegramIconsTheme {
           return image
       }
   }
+  public var previewSenderArchiveAccent: CGImage {
+      if let image = cached.with({ $0["previewSenderArchiveAccent"] }) {
+          return image
+      } else {
+          let image = _previewSenderArchiveAccent()
+          _ = cached.modify { current in
+              var current = current
+              current["previewSenderArchiveAccent"] = image
+              return current
+          }
+          return image
+      }
+  }
   public var chatGroupToggleSelected: CGImage {
       if let image = cached.with({ $0["chatGroupToggleSelected"] }) {
           return image
@@ -10464,6 +10477,7 @@ public final class TelegramIconsTheme {
   private let _previewSenderDelete: ()->CGImage
   private let _previewSenderDeleteFile: ()->CGImage
   private let _previewSenderArchive: ()->CGImage
+  private let _previewSenderArchiveAccent: ()->CGImage
   private let _chatGroupToggleSelected: ()->CGImage
   private let _chatGroupToggleUnselected: ()->CGImage
   private let _successModalProgress: ()->CGImage
@@ -11249,6 +11263,7 @@ public final class TelegramIconsTheme {
       previewSenderDelete: @escaping()->CGImage,
       previewSenderDeleteFile: @escaping()->CGImage,
       previewSenderArchive: @escaping()->CGImage,
+      previewSenderArchiveAccent: @escaping()->CGImage,
       chatGroupToggleSelected: @escaping()->CGImage,
       chatGroupToggleUnselected: @escaping()->CGImage,
       successModalProgress: @escaping()->CGImage,
@@ -12033,6 +12048,7 @@ public final class TelegramIconsTheme {
       self._previewSenderDelete = previewSenderDelete
       self._previewSenderDeleteFile = previewSenderDeleteFile
       self._previewSenderArchive = previewSenderArchive
+      self._previewSenderArchiveAccent = previewSenderArchiveAccent
       self._chatGroupToggleSelected = chatGroupToggleSelected
       self._chatGroupToggleUnselected = chatGroupToggleUnselected
       self._successModalProgress = successModalProgress
